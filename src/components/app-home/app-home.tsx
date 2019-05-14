@@ -6,22 +6,37 @@ import { Component } from '@stencil/core';
   shadow: true
 })
 export class AppHome {
+  public maxDiv = 1000;
+
+  renderArrowDiv() {
+    let divArr = [];
+    for (let i = 0; i < this.maxDiv; i++) {
+      divArr.push(<app-profile index={i}></app-profile>);
+    }
+    return divArr;
+  }
+
+  renderBoundDiv() {
+    let divArr = [];
+    for (let i = 0; i < this.maxDiv; i++) {
+      divArr.push(<app-profile-bound index={i}></app-profile-bound>);
+    }
+    return divArr;
+  }
+
+  renderBoundSimpleDiv() {
+    let divArr = [];
+    for (let i = 0; i < this.maxDiv; i++) {
+      divArr.push(<app-profile-simple index={i}></app-profile-simple>);
+    }
+    return divArr;
+  }
+
 
   render() {
     return (
       <div class='app-home'>
-        <p>
-          Welcome to the Stencil App Starter.
-          You can use this starter to build entire apps all with
-          web components using Stencil!
-          Check out our docs on <a href='https://stenciljs.com'>stenciljs.com</a> to get started.
-        </p>
-
-        <stencil-route-link url='/profile/stencil'>
-          <button>
-            Profile page
-          </button>
-        </stencil-route-link>
+        {this.renderBoundDiv()}
       </div>
     );
   }

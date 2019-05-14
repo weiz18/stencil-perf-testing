@@ -9,9 +9,6 @@ import '@stencil/core';
 
 import '@stencil/router';
 import '@stencil/state-tunnel';
-import {
-  MatchResults,
-} from '@stencil/router';
 
 
 export namespace Components {
@@ -19,11 +16,25 @@ export namespace Components {
   interface AppHome {}
   interface AppHomeAttributes extends StencilHTMLAttributes {}
 
+  interface AppProfileBound {
+    'index': number;
+  }
+  interface AppProfileBoundAttributes extends StencilHTMLAttributes {
+    'index'?: number;
+  }
+
+  interface AppProfileSimple {
+    'index': number;
+  }
+  interface AppProfileSimpleAttributes extends StencilHTMLAttributes {
+    'index'?: number;
+  }
+
   interface AppProfile {
-    'match': MatchResults;
+    'index': number;
   }
   interface AppProfileAttributes extends StencilHTMLAttributes {
-    'match'?: MatchResults;
+    'index'?: number;
   }
 
   interface AppRoot {}
@@ -33,12 +44,16 @@ export namespace Components {
 declare global {
   interface StencilElementInterfaces {
     'AppHome': Components.AppHome;
+    'AppProfileBound': Components.AppProfileBound;
+    'AppProfileSimple': Components.AppProfileSimple;
     'AppProfile': Components.AppProfile;
     'AppRoot': Components.AppRoot;
   }
 
   interface StencilIntrinsicElements {
     'app-home': Components.AppHomeAttributes;
+    'app-profile-bound': Components.AppProfileBoundAttributes;
+    'app-profile-simple': Components.AppProfileSimpleAttributes;
     'app-profile': Components.AppProfileAttributes;
     'app-root': Components.AppRootAttributes;
   }
@@ -48,6 +63,18 @@ declare global {
   var HTMLAppHomeElement: {
     prototype: HTMLAppHomeElement;
     new (): HTMLAppHomeElement;
+  };
+
+  interface HTMLAppProfileBoundElement extends Components.AppProfileBound, HTMLStencilElement {}
+  var HTMLAppProfileBoundElement: {
+    prototype: HTMLAppProfileBoundElement;
+    new (): HTMLAppProfileBoundElement;
+  };
+
+  interface HTMLAppProfileSimpleElement extends Components.AppProfileSimple, HTMLStencilElement {}
+  var HTMLAppProfileSimpleElement: {
+    prototype: HTMLAppProfileSimpleElement;
+    new (): HTMLAppProfileSimpleElement;
   };
 
   interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {}
@@ -64,12 +91,16 @@ declare global {
 
   interface HTMLElementTagNameMap {
     'app-home': HTMLAppHomeElement
+    'app-profile-bound': HTMLAppProfileBoundElement
+    'app-profile-simple': HTMLAppProfileSimpleElement
     'app-profile': HTMLAppProfileElement
     'app-root': HTMLAppRootElement
   }
 
   interface ElementTagNameMap {
     'app-home': HTMLAppHomeElement;
+    'app-profile-bound': HTMLAppProfileBoundElement;
+    'app-profile-simple': HTMLAppProfileSimpleElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
   }
